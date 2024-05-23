@@ -8,4 +8,5 @@ Project for [C201.2](https://modulux.htwk-leipzig.de/modulux/modul/6325): Patter
 ## Usage
 
 - Install Python 3.11
-- run `pip install -r src/requirements.txt`
+- Create and activate [virtual environment](https://docs.python.org/3/library/venv.html)
+- Run `pip install -r src/requirements.txt`
