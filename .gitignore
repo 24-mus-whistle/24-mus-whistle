@@ -1,4 +1,7 @@
-data/
+# ignore everything in data directory but keep directory
+src/data/*
+!src/data/README.md
+
 .venv
 .vscode/
 .DS_Store
