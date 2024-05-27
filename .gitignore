@@ -1,5 +1,6 @@
 src/data/*
-!src/data/README.md
+!src/data/*.md
+!src/data/*.sh
 
 doc/doc.pdf
 

@@ -25,3 +25,16 @@ start,end,label
 93.70139144639144,96.25142931392931,No_Whistle
 96.90557823129251,97.14938775510204,False_Whistle
 ```
+
+
+# Adding your data
+
+Add your data to `src/data/your_data`. Then execute the following commands:
+
+```sh
+cd src/data
+sh pre_process.sh your_data .
+```
+
+This makes sure that all `.flac` and `.csv` files are directly in `src/data` (i.e. not in a sub directory).
+It also only takes files that are named as described above and that have both a `.flac` and a corresponding `.csv` file.
