@@ -33,7 +33,7 @@ Add your data to `src/data/your_data`. Then execute the following commands:
 
 ```sh
 cd src/data
-sh pre_process.sh your_data .
+sh add_data.sh your_data .
 ```
 
 This makes sure that all `.flac` and `.csv` files are directly in `src/data` (i.e. not in a sub directory).
