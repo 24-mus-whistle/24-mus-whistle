@@ -2,6 +2,8 @@ src/data/*
 !src/data/*.md
 !src/data/*.sh
 
+*.skops
+
 .ipynb_checkpoints
 __pycache__
 
