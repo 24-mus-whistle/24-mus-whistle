@@ -10,9 +10,19 @@ def load_data(data_dir: str) -> list[str]:
     Returns:
         list[str]: List of absolute paths of all files in passed `data_dir`
     """
-    data_file_paths = map(
+    paths = map(
         lambda file: os.path.normpath(os.path.join(data_dir, file)),
         os.listdir(data_dir)
     )
+    
+    # keep only csv and flac
+    data_file_paths = []
+    for file in paths:
+        extension = os.path.splitext(file)[1]
+        if extension != '.flac' and extension != '.csv':
+            continue
+        else:
+            data_file_paths.append(file)
+    
     data_file_paths = list(data_file_paths)
     return data_file_paths
