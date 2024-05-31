@@ -3,6 +3,7 @@ src/data/*
 !src/data/*.sh
 
 .ipynb_checkpoints
+__pycache__
 
 doc/doc.pdf
 
