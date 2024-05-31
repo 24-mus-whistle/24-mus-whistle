@@ -4,7 +4,7 @@ src/data/*
 
 *.skops
 
-src/research/fft_feature_*.npy
+src/research/fft/fft_feature_*.npy
 
 .ipynb_checkpoints
 __pycache__
