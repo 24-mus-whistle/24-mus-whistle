@@ -37,7 +37,7 @@ def reduce_and_reshuffle(X, y, ratio):
 
 Der `ratio`-Parameter ist dabei wie folgt zu verstehen:
 
-$$\verb|ratio| = \frac{\# \operatorname{no-whistle}}{\# \operatorname{whistle}}$$
+$$\verb|ratio| = \frac{\vert\text{no-whistle}\vert}{\vert\text{whistle}\vert}$$
 
 Dementsprechend bedeutet eine `ratio` von `1 / 1`, dass gleich viele Daten mit und ohne Pfiff
 in der resultierenden reduzierten Feature-Matrix enthalten sein sollen. Eine `ratio` von `n / 1`
