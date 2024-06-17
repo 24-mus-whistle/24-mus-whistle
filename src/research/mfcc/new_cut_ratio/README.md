@@ -59,6 +59,7 @@ zurück. Dabei sind bei einem Verhältnis von $m : n$ insgesamt $n+m$ Features e
 In diesem Ordner wurden die folgenden verschiedenen Modelle untersucht:
 
 - [Perzeptron](./perceptron.ipynb)
+- [Multi-layered Perzeptron](./mlp.ipynb) mit Hidden-Layer-Size `(30,30)`
 - [Stochastic-Gradient-Descent](./sgd.ipynb)
 - [Support-Vektor-Maschine](./svc.ipynb)
 
@@ -66,3 +67,10 @@ Die Ergebnisse sind in den jeweiligen verlinkten Notebooks zu finden. Insgesamt 
 ausschließlich bei der Support-Vektor-Maschine eine tatsächliche Korrelation zwischen dem Verhältnis
 der Label und den Leistungsmetriken der Modelle vorhanden zu sein. Weiterhin schließt dieses Modell
 mit einer Präzision von 100% bei einem Recall von 8,22% am besten ab.
+
+| Modell                           | Verhältnis | Präzision | Recall | F1-Score |
+|----------------------------------|------------|-----------|--------|----------|
+| [Perzeptron](./perceptron.ipynb) | 59:1       | 17,31%    | 12,33% | 0,14     |
+| [MLP](./mlp.ipynb) `(30,30)`     | 94:1       | 100%      | 1,37%  | 0,03     |
+| [SGD](./sgd.ipynb)               | 47:1       | 14,86%    | 15,07% | 0,15     |
+| [SVM](./svc.ipynb)               | 21:1       | 100,00%   | 8,22%  | 0,15     |
