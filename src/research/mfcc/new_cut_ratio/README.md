@@ -73,4 +73,4 @@ mit einer Präzision von 100% bei einem Recall von 8,22% am besten ab.
 | [Perzeptron](./perceptron.ipynb) | 59:1       | 17,31%    | 12,33% | 0,14     |
 | [MLP](./mlp.ipynb) `(30,30)`     | 94:1       | 100%      | 1,37%  | 0,03     |
 | [SGD](./sgd.ipynb)               | 47:1       | 14,86%    | 15,07% | 0,15     |
-| [SVM](./svc.ipynb)               | 21:1       | 100,00%   | 8,22%  | 0,15     |
+| [SVM](./svc.ipynb)               | 21:1       | 100%      | 8,22%  | 0,15     |
