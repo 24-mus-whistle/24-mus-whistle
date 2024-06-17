@@ -1,6 +1,6 @@
 # Beitrag zum Projekt
 
-## @Johann1305
+## [@Johann1305](https://github.com/Johann1305)
 
 - Datenbeschaffung
 - ursprüngliche Recherche über Features
@@ -10,7 +10,7 @@
 - Analyse mehrerer Frequenzbereiche, Experimente mit Gradientenverfahren
 
 
-## @nicosrm
+## [@nicosrm](https://github.com/nicosrm)
 
 - ursprüngliche Recherche über Features
 - Experimente mit MFCC-Feature und teilweise FFT
