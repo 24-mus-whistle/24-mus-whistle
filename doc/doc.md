@@ -1,3 +1,24 @@
 # Erkennung von Pfiffen für NAO Robots
 
-TBA
+## Einleitung
+
+
+## Datenbasis
+
+### Initiale Daten
+
+
+### Datenvorverarbeitung
+
+
+### Schnipsel-Ansätze
+
+
+## Features
+
+
+## Modelle
+
+
+## Ergebnisse
+
