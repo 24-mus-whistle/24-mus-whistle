@@ -330,12 +330,15 @@ könnte es für die Modelle naheliegen, eher als Kein-Pfiff zu klassifizieren. A
 wir den oben bereits angesprochenen [dritten Ansatz](#dritter-ansatz-new_cut_ration) zur Analyse
 dieses Verhältnisses konzipiert.
 
-| Modell (Feature: FFT)                                       | Präzision | Recall | F1-Score |
-|-------------------------------------------------------------|-----------|--------|----------|
-| [SVM](../src/research/fft/svc_fft_cut.ipynb) (alle Dateien) | 85,37%    | 49,30% | 0,63     |
+| Modell (Feature: FFT)                                  | Präzision | Recall | F1-Wert |
+|--------------------------------------------------------|-----------|--------|---------|
+| [Perzeptron](../src/research/fft/cut/perceptron.ipynb) | 65,45%    | 58,06% | 0,62    |
+| [MLP](../src/research/fft/cut/mlp.ipynb) `(30,30)`     | 77,05%    | 75,81% | 0,76    |
+| [SGD](../src/research/fft/cut/sgd.ipynb)               | 53,42%    | 62,90% | 0,58    |
+| [SVM](../src/research/fft/cut/svc.ipynb)               | 82,93%    | 54,84% | 0,66    |
 
-Im Vergleich dazu schneidet die FFT-SVM wesentlich besser ab – sogar besser als die FFT-SVM für die
-ungeschnittenen Dateien. Dennoch ist ein F1-Score von 0,63 noch nicht ausreichend.
+Im Vergleich dazu schneidet die FFT-SVM wesentlich besser ab – in der Präzision sogar besser als die
+FFT-SVM für die ungeschnittenen Dateien. Dennoch ist ein F1-Score von 0,66 noch nicht wie erwünscht.
 
 
 ### Zweiter Schnipsel-Ansatz: `new_cut`
