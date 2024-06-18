@@ -38,7 +38,7 @@ von [Prof. Martin Grüttmüller](https://fim.htwk-leipzig.de/fakultaet/personen/
 
 ## Hinweis bzgl. der Daten
 
-Die Daten sind aus Lizenz-Gründen nicht in diesem Repository enthalten. Die Dateien sind unter
+Die Daten sind aus Speicher-Gründen nicht in diesem Repository enthalten. Die Dateien sind unter
 `src/data` gespeichert und beinhalten `.flac` Audio-Dateien und zugehörige, identische benannte
 `.csv`-Dateien, in welchen die Label gespeichert sind. Weitere Informationen können der zugehörigen
 [README](src/data/README.md) im Daten-Verzeichnis eingesehen werden.
