@@ -142,7 +142,7 @@ $$
 $$
 
 Die Implementierung kann unter
-[src/research/cut/cut.ipynb](../src/research/cut/cut.ipynb) nachvollzogen werden. Dort ist in der
+[`src/research/cut/cut.ipynb`](../src/research/cut/cut.ipynb) nachvollzogen werden. Dort ist in der
 letzten Zelle erkennbar, dass insgesamt mehr Schnipsel als `whistle` markiert wurden, als
 tatsächlich aus den originalen Daten hervorgegangen ist. Wir haben zunächst unsere Modell auf dieser
 Basis trainiert. Da wir mit diesem Ansatz allerdings nicht gänzlich zufrieden waren, haben wir
