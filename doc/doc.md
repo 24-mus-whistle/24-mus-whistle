@@ -256,6 +256,11 @@ Insgesamt haben wir die folgenden Modelle untersucht:
 Die Modelle werden im folgenden Abschnitt ausgewertet.
 
 
+### Experimente mit MLP Hidden-Layer-Size
+
+<!-- TODO: Nico -->
+
+
 ## Ergebnisse
 
 In diesem Abschnitt werden die Resultate aus den verschiedenen Modellen und Schnitt-Ansätzen
@@ -370,6 +375,19 @@ Bei den FFT-Modellen sieht dies gänzlich anders aus.
 Hier kann deutlich erkannt werden, dass die Präzision bei allen Modellen bei über 80% liegt.
 Ebenfalls liegt die Gesamtleistung (F1-Score) bei mindesten 0,7. Beim Vergleich der Daten mit denen
 aus dem ersten Schnitt-Ansatz ist eine kleine Verbesserung erkennbar.
+
+
+### Dritter Ansatz: `new_cut_ratio`
+
+<!-- TODO: Nico -->
+
+
+### MLP Hidden Layer Size
+
+<!-- TODO: Nico -->
+
+![FFT Layer Size](../src/research/fft/new_cut/mlp_layer/plot.png)
+
 
 
 # Fazit
