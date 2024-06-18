@@ -211,6 +211,12 @@ verloren[^1][^2].
 
 <!-- TODO: MFCC Bild für Whistle und No-Whistle -->
 
+Im Verlauf des Projektes hat sich herausgestellt, dass sowohl die  MFCC-Generierung als auch das
+Trainieren der verschiedenen Modelle zwar im Vergleich zur FFT sehr viel schneller funktioniert.
+Allerdings waren die Ergebnisse wesentlich schlechter und meist für die Praxis unbrauchbar. Darauf
+wird genauer im Abschnitt [Ergebnisse](#ergebnisse) eingegangen. Zunächst werden allerdings die
+verschiedenen betrachteten Modelle erläutert.
+
 
 ## Modelle
 
