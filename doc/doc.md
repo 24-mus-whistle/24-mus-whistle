@@ -258,6 +258,125 @@ Die Modelle werden im folgenden Abschnitt ausgewertet.
 
 ## Ergebnisse
 
+In diesem Abschnitt werden die Resultate aus den verschiedenen Modellen und Schnitt-Ansätzen
+dargelegt. Die Bewertung findet aufgrund des realen Szenarios wie folgt ab. Es ist für die Roboter
+besser, einen tatsächlich aufgetretenen Pfiff *nicht* zu erkennen, als eine Sekunde, in der kein
+Pfiff war, als Pfiff zu klassifizieren. Dementsprechend wollen wir die False-Positives minimieren.
+Somit bewerten wir im folgenden anhand der Präzision anstelle des Recalls.
+
+
+### Ungeschnittene Daten
+
+Zu erst haben wir die ungeschnittenen Daten untersucht. Dabei haben wir festgestellt, dass die
+Generierung der FFT-Feature-Matrix sowie das Training der Modelle erheblich länger dauerten und
+ressourcen-intensiv waren als für MFCC. Im späteren Verlauf stellten wir die These auf, dass dies
+an der Länge der Dateien liegt. Es liegt nahe, dass die Generierung der FFT für kurze Dateien
+wesentlich schneller geht als für große. Diese Annahme bestätigte sich bei der Betrachtung der
+verschiedenen Schnipsel-Ansätze.
+
+Aus diesem Grund konnten für FFT nur ein Bruchstück der Dateien untersuchen. Aus selbigem Grund
+haben wir für die FFT nur die Support Vektor Maschine trainiert. Die Ergebnisse sehen wie folgt aus.
+
+| Modell (Feature: MFCC)                                         | Präzision | Recall | F1-Score |
+|----------------------------------------------------------------|-----------|--------|----------|
+| [Perzeptron](../src/research/mfcc/uncut/perceptron_mfcc.ipynb) | 69,75%    | 100%   | 0,82     |
+| [SGD](../src/research/mfcc/uncut/sgd_mfcc.ipynb)               | 89,25%    | 100%   | 0,94     |
+| [SVM](../src/research/mfcc/uncut/svc_mfcc.ipynb)               | 95,40%    | 100%   | 0,98     |
+
+In der vorangestellten Tabelle ist zu erkennen, dass das Perzeptron mit einer Präzision von nur
+69,75% am schlechtesten abschneidet. Die SVM schneidet hierbei am besten ab mit einer Präzision von
+95,40% und einem F1-Score 0,98 – also nahezu perfekt. Das SGD schneidet ebenfalls nicht schlecht ab
+mit einer Präzision von fast 90% und einem F1-Score von 0,94.
+
+| Modell (Feature: FFT)                                 | Präzision | Recall | F1-Score |
+|-------------------------------------------------------|-----------|--------|----------|
+| [SVM](../src/research/fft/svc_fft.ipynb) (10 Dateien) | 70,00%    | 100%   | 0,82     |
+
+In der Tabelle ist zu erkennen, dass die FFT-SVM mit einer Präzision von nur 70% im Vergleich zur
+MFCC-SVM deutlich schlechter abschneidet. Dabei sei allerdings erwähnt, dass hier nur auf 10 Dateien
+(Audio-Dateien *und* CSV-Dateien) trainiert wurde. Daher ist das Ergebnis nur bedingt für einen
+Vergleich geeignet.
+
+
+### Erster Schnipsel-Ansatz: `cut`
+
+Im weiteren Verlauf haben wir, wie oben bereits motiviert, die Audio-Daten in Sekunden-Abschnitte
+geschnitten (vgl. Abschnitt [Erster Ansatz `cut`](#erster-ansatz-cut)). Dies erlaubt es, auch die
+FFT-Modelle auf allen Daten zu trainieren.
+
+Für MFCC sehen die Ergebnisse wie folgt aus:
+
+| Modell (Feature: MFCC)                                  | Präzision | Recall | F1-Score |
+|---------------------------------------------------------|-----------|--------|----------|
+| [Perzeptron](../src/research/mfcc/cut/perceptron.ipynb) | 25,00%    | 1,61%  | 0,03     |
+| [MLP](../src/research/mfcc/cut/mlp.ipynb) `(100,)`      | 0,00%     | 0,00%  | 0,00     |
+| [SGD](../src/research/mfcc/cut/sgd.ipynb)               | 33,33%    | 1,61%  | 0,03     |
+| [SVM](../src/research/mfcc/cut/svc.ipynb)               | 0,00%     | 0,00%  | 0,00     |
+
+Im Vergleich zu den [Ergebnissen](#ungeschnittene-daten) für die ungeschnittenen Daten ist deutlich
+erkennbar, dass sich unsere These bzgl. des Paddings bestätigt. Die Ergebnisse sind nun viel
+schlechter und unbrauchbar. Jegliche Gesamtleistungen der Modelle, gemessen am F1-Score, liegt
+bei unter 0,1. Weiterhin macht das MLP und die SVM keine einzige (korrekte oder überhaupt)
+Pfiff-Vorhersage. Alle Daten werden bei diesen beiden Modellen als Kein-Pfiff klassifiziert.
+
+Es ist außerdem zu erkennen, dass die Werte vom MLP und der SVM jeweils 0 annehmen. Bei genauerer
+Betrachtung ist erkenntlich, dass alle Test-Daten als "Kein-Pfiff enthalten" klassifiziert werden.
+Auch wenn die anderen beiden Modelle überhaupt Pfiffe als solche identifizieren, schneiden diese
+dennoch sehr schlecht ab.
+
+Unsere Vermutung ist, dass dies am Verhältnis der Pfiff- zu den Kein-Pfiff-Daten liegen könnte.
+Wir haben insgesamt 112-Mal mehr Kein-Pfiff-Sekunden-Abschnitte als welche mit Pfiff. Dadurch
+könnte es für die Modelle naheliegen, eher als Kein-Pfiff zu klassifizieren. Aus diesem Grund haben
+wir den oben bereits angesprochenen [dritten Ansatz](#dritter-ansatz-new_cut_ration) zur Analyse
+dieses Verhältnisses konzipiert.
+
+| Modell (Feature: FFT)                                       | Präzision | Recall | F1-Score |
+|-------------------------------------------------------------|-----------|--------|----------|
+| [SVM](../src/research/fft/svc_fft_cut.ipynb) (alle Dateien) | 85,37%    | 49,30% | 0,63     |
+
+Im Vergleich dazu schneidet die FFT-SVM wesentlich besser ab – sogar besser als die FFT-SVM für die
+ungeschnittenen Dateien. Dennoch ist ein F1-Score von 0,63 noch nicht ausreichend.
+
+
+### Zweiter Schnipsel-Ansatz: `new_cut`
+
+Als nächstes haben wir einen anderen Schnitt-Ansatz verwendet (siehe Abschnitt
+[Zweiter Ansatz: `new_cut`](#zweiter-ansatz-new_cut)). Die Ergebnisse für MFCC sehen wie folgt aus.
+
+| Modell (Feature: MFCC)                                      | Präzision | Recall | F1-Score |
+|-------------------------------------------------------------|-----------|--------|----------|
+| [Perzeptron](../src/research/mfcc/new_cut/perceptron.ipynb) | 12,50%    | 2,74%  | 0,04     |
+| [MLP](../src/research/mfcc/new_cut/mlp.ipynb) `(30,30)`     | 0,00%     | 0,00%  | 0,00     |
+| [SGD](../src/research/mfcc/new_cut/sgd.ipynb)               | 8,11%     | 4,11%  | 0,05     |
+| [SVM](../src/research/mfcc/new_cut/svc.ipynb)               | 0,00%     | 0,00%  | 0,00     |
+
+Dabei ist zu erkennen, dass die Ergebnisse noch schlechter als beim
+[ersten Schnitt-Ansatz](#erster-schnipsel-ansatz-cut) sind. Trotz der nun korrekt markierten Daten
+scheint dieser Ansatz keine Verbesserung beim MFCC-Feature zu bringen. Auch hier ist dasselbe
+Verhalten vom MLP und SVM bzgl. der fehlenden Klassifikationen als Pfiff zu beobachten.
+
+Bei den FFT-Modellen sieht dies gänzlich anders aus.
+
+| Modell (Feature: FFT)                                      | Präzision | Recall | F1-Wert |
+|------------------------------------------------------------|-----------|--------|---------|
+| [Perzeptron](../src/research/fft/new_cut/perceptron.ipynb) | 81,42%    | 78,08% | 0,80    |
+| [MLP](../src/research/fft/new_cut/mlp.ipynb) `(30,30)`     | 86,57%    | 79,45% | 0,83    |
+| [SGD](../src/research/fft/new_cut/sgd.ipynb)               | 85,71%    | 73,97% | 0,79    |
+| [SVM](../src/research/fft/new_cut/svc.ipynb)               | 86,00%    | 58,90% | 0,70    |
+
+Hier kann deutlich erkannt werden, dass die Präzision bei allen Modellen bei über 80% liegt.
+Ebenfalls liegt die Gesamtleistung (F1-Score) bei mindesten 0,7. Beim Vergleich der Daten mit denen
+aus dem ersten Schnitt-Ansatz ist eine kleine Verbesserung erkennbar.
+
+
+# Fazit
+
+
+# Ausblick
+
+- verschiedene Einstellungen von (weiteren) Parameter probieren
+- andere Feature probieren
+
 
 <!-- ------------------------------------------------------------------------------------------- -->
 
