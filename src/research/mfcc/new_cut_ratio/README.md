@@ -10,8 +10,8 @@ unterschiedliche Ergebnisse basierend auf dem Verhältnis.
 
 Als Basis verwenden wir den "New-Cut-Approach". In diesem schneiden wir die vorhanden Audio-Dateien
 in Abschnitte, die jeweils 1 Sekunde lang sind. Die Label werden entsprechend den Label-CSVs
-eingelesen und mit Hilfe eines Thresholds von $\Theta = 0.1$ gerundet. Weitere Informationen dazu
-können unter dem zugehörigen [Notepad](../../new_cut/new_cut.ipynb) eingesehen werden. Dieses
+eingelesen und mit Hilfe eines Thresholds von $\theta = 0.1$ gerundet. Weitere Informationen dazu
+können unter dem zugehörigen [Notebook](../../new_cut/new_cut.ipynb) eingesehen werden. Dieses
 muss initial ausgeführt werden, bevor die anderen Notepads ausgeführt werden können.
 
 Für diese Abschnitte wurde jeweils das MFCC-Feature generiert. Das zugehörige
@@ -54,7 +54,7 @@ Die Funktion gibt schlussendlich die neue Feature-Matrix mit dem entsprechendem 
 zurück. Dabei sind bei einem Verhältnis von $m : n$ insgesamt $n+m$ Features enthalten.
 
 
-## Untersuchte Modell und Ergebnisse
+## Untersuchte Modelle und Ergebnisse
 
 In diesem Ordner wurden die folgenden verschiedenen Modelle untersucht:
 
