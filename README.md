@@ -1,6 +1,19 @@
 # Pfiff-Erkennung
 
-Die Robocup [Standart Platform League (SPL)](https://spl.robocup.org/) ist eine Internationale Liga im Robotefußball. In dieser Liga treten Teams von verschiedenen Hochschulen und Universitäten weltweit gegeneinader an. Verwendet wird dabei ein für alle Teams baugleicher Roboter vom Typ [NAO](https://www.aldebaran.com/en/nao) der Firma [Aldebaran](https://www.aldebaran.com/en). Die Spielregeln werden dabei nach und nach erweitert um sich Stück für Stück den Regeln des Menschenfußballs anzunähern. In diesem Zuge wurden die Regeln dahingehend erweitert, dass die Roboter nun zu auch Pfiffe des Schiedsrichters erkennen und darauf reagieren können sollen. Das Team der [HTWK Robots](https://robots.htwk-leipzig.de/startseite) hat daher bereits Audiodaten von vergangenen Spielen gesamelt und Labels dazu erstellt. Durch dieses Projekt, im Rahmen des Moduls [Mustererkennung](https://modulux.htwk-leipzig.de/app-modulux/frontend/ausgabe/module/?no_cache=1&tx_ezqueries_ezqueriesplugin%5Bfilters%5D%5Bm_mod.m_mod_id%5D=6325&tx_ezqueries_ezqueriesplugin%5Bfilters%5D%5BfilterType%5D=strict&tx_ezqueries_ezqueriesplugin%5Baction%5D=detail&tx_ezqueries_ezqueriesplugin%5Bcontroller%5D=RecordManagement), wird untersucht wie die Erkennung der Pfiffen mit Hilfe von Methoden der Musstererkennung durchgeführt werden könnte.
+Die Robocup [Standard Platform League (SPL)](https://spl.robocup.org/) ist eine internationale Liga
+im Roboterfußball. In dieser Liga treten Teams von verschiedenen Hochschulen und Universitäten
+weltweit gegeneinader an. Verwendet wird dabei ein für alle Teams baugleicher Roboter vom Typ
+[NAO](https://www.aldebaran.com/en/nao) der Firma [Aldebaran](https://www.aldebaran.com/en).
+
+Die Spielregeln werden dabei kontinuierlich erweitert, um sich Stück für Stück den Regeln des
+menschlichen Fußballs anzunähern. In diesem Zuge wurde eine neue Regeln eingeführt, die fordert,
+dass die Roboter Pfiffe der Schiedsrichter:innen erkennen und darauf reagieren können sollen.
+
+Das Team der [HTWK Robots](https://robots.htwk-leipzig.de/startseite) hat daher bereits Audiodaten
+von vergangenen Spielen gesammelt und Labels dazu erstellt. Durch dieses Projekt, im Rahmen des
+Moduls [Mustererkennung](https://modulux.htwk-leipzig.de/modulux/modul/6325), wird untersucht, wie
+die Erkennung der Pfiffen mit Hilfe von Methoden der Mustererkennung durchgeführt werden können.
+
 
 ## Dokumentation
 
