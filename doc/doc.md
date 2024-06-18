@@ -125,27 +125,28 @@ $$
 
 Hier ist zu erkennen, dass die beiden Zeiträume so gerundet wird, dass die Pfiffe in Sekunde 5
 nicht als solche verarbeitet werden. Daher war unser erster Ansatz, einen Threshold $\theta = 0.1$
-als Konstante einzuführen.
-
-$$\Huge\color{red}\textbf{TODO: Cut neu ausführen}$$
-
-<!-- TODO: start fixen + erklären -->
-
-Falls die Nachkomma-Stellen von Endzeit (`end % 1`) unter dem Threshold $\theta$ liegt, wird das
-Maximum der abgerundeten Zeit und 0 verwendet (`max(0, floor(time))`).
+als Konstante einzuführen. Die Start- und Endwerte sollten dabei wie folgt gerundet werden.
 
 $$
-\texttt{end}(t) = \begin{cases}
-  t \bmod 1, &t < \theta \\
-  \max \left( 0, \lfloor t \rfloor \right), &\text{sonst}
-\end{cases}
+\begin{aligned}
+  \texttt{start}(t) &= \begin{cases}
+    \lceil t \rceil, &\left(t \bmod 1 \right) > 1 - \theta \\
+    \lfloor t \rfloor, &\text{sonst}
+  \end{cases}
+  \\
+  \texttt{end}(t) &= \begin{cases}
+    \max \{ 0, \lfloor t \rfloor \}, &\left(t \bmod 1 \right) < \theta \\
+    \lceil t \rceil, &\text{sonst}
+  \end{cases}
+\end{aligned}
 $$
 
 Die Implementierung kann unter
-[src/research/new_cut/new_cut.ipynb](../src/research/new_cut/new_cut.ipynb) nachvollzogen werden.
-
-Da wir mit dem Rundungsoperator nicht zufrieden waren, haben wir einen weiteren Ansatz konzipiert.
-Dieser wird im folgenden Abschnitt erläutert.
+[src/research/cut/cut.ipynb](../src/research/cut/cut.ipynb) nachvollzogen werden. Dort ist in der
+letzten Zelle erkennbar, dass insgesamt mehr Schnipsel als `whistle` markiert wurden, als
+tatsächlich aus den originalen Daten hervorgegangen ist. Wir haben zunächst unsere Modell auf dieser
+Basis trainiert. Da wir mit diesem Ansatz allerdings nicht gänzlich zufrieden waren, haben wir
+später einen weiteren Ansatz konzipiert. Dieser wird im folgenden Abschnitt erläutert.
 
 
 #### Zweiter Ansatz: `new_cut`
