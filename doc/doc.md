@@ -189,9 +189,44 @@ erwartet und konzipiert markiert bzw. entfernt werden.
 
 ## Features
 
+Für das Projekt haben wir uns zwei verschiedene Feature überlegt: die *Fast Fourier-Transformation*
+(FFT) und *Mel Frequency Cepstral Coefficients* (MFCC). Diese werden in den folgenden Abschnitten
+kurz erläutert.
+
+
+### Fast Fourier-Transformation
+
+<!-- TODO: Johann: Erklärung -->
+
+
+### Mel Frequency Cepstral Coefficients
+
+Die Mel Frequency Cepstral Coefficients (MFCC) wurden zur Modellierung von Audio-Eigenschaften
+entwickelt. Dabei werden die Dimensionen der Audio-Daten start reduziert ohne dabei wichtige
+Eigenschaften zu verlieren. Dabei werden die Oberschwingungen (*Harmonics*) und die Seitenbänder
+(*Sidebands*) des Signalspektrums extrahiert. Dabei soll das menschliche Gehör nachempfunden werden.
+Dieses Feature ist in der Mustererkennung, v.a. bei der Stimmen- und Spracherkennung besonders
+beliebt. Allerdings werden bei der Verkleinerung Informationen über die Tonlage (*Pitch*) 
+verloren[^1][^2].
+
+<!-- TODO: MFCC Bild für Whistle und No-Whistle -->
+
 
 ## Modelle
 
 
 ## Ergebnisse
+
+
+<!-- ------------------------------------------------------------------------------------------- -->
+
+<!-- LITERATUR -->
+
+[^1]: Z. Kh. Abdul und A. K. Al-Talabani, „Mel Frequency Cepstral Coefficient and its Applications:
+      A Review“, _IEEE Access_, Bd. 10, S. 122136–122158, Nov. 2022, doi:
+      [10.1109/ACCESS.2022.3223444](https://doi.org/10.1109/ACCESS.2022.3223444).
+
+[^2]: F. Zheng, G. Zhang, und Z. Song, „Comparison of different implementations of MFCC“,
+      _J. Comput. Sci. & Technol._, Bd. 16, Nr. 6, S. 582–589, Nov. 2001, doi:
+      [10.1007/BF02943243](https://doi.org/10.1007/BF02943243).
 
