@@ -187,6 +187,24 @@ Im zugehörigen [Notebook](../src/research/new_cut/new_cut.ipynb) ist ein Beispi
 erwartet und konzipiert markiert bzw. entfernt werden.
 
 
+#### Dritter Ansatz: `new_cut_ratio`
+
+Nach den Experimenten mit dem vorhergehenden Ansatz war zwar eine Verbesserung erkennbar. Allerdings
+wurden dennoch viele Pfiffe als kein Pfiff klassifiziert. Nach einigen Überlegungen stellen wir die
+These auf, dass das Verhältnis der Schnipsel ohne Pfiff im Vergleich zu den Ausschnitten mit Pfiff
+ggf. einen Einfluss haben könnte. Wir haben insgesamt 120-Mal mehr Sekunden ohne Pfiff als mit,
+siehe u.a. in diesem [Notebook](../src/research/mfcc/new_cut_ratio/perceptron.ipynb). Daher wollten
+wir die Leistung der verschiedenen Modelle (siehe Abschnitt [Modelle](#modelle)) in Abhängigkeit von
+verschiedenen Verhältnissen der Label untersuchen.
+
+Da das MFCC-Feature wesentlich schneller zu generieren war als die FFTs – mehr dazu im folgenden
+– [Abschnitt](#features) – entschieden wir uns, diesen Ansatz ausschließlich für erste zu
+untersuchen. Den Ansatz zur Ermittlung des Bias kann in der
+[`README`](../src/research/mfcc/new_cut_ratio/README.md#ansatz-für-ermittlung-des-bias) unter
+`src/research/mfcc/new_cut_ratio` genauer nachgelesen werden. Die Ergebnisse werden im Abschnitt
+[Ergebnisse](#ergebnisse) dargestellt.
+
+
 ## Features
 
 Für das Projekt haben wir uns zwei verschiedene Feature überlegt: die *Fast Fourier-Transformation*
