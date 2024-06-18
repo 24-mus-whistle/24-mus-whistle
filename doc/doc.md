@@ -131,11 +131,11 @@ $$
 \begin{aligned}
   \texttt{start}(t) &= \begin{cases}
     \lceil t \rceil, &\left(t \bmod 1 \right) > 1 - \theta \\
-    \lfloor t \rfloor, &\text{sonst}
+    \max\left( 0, \lfloor t \rfloor\right), &\text{sonst}
   \end{cases}
   \\
   \texttt{end}(t) &= \begin{cases}
-    \max \{ 0, \lfloor t \rfloor \}, &\left(t \bmod 1 \right) < \theta \\
+    \max\left( 0, \lfloor t \rfloor \right), &\left(t \bmod 1 \right) < \theta \\
     \lceil t \rceil, &\text{sonst}
   \end{cases}
 \end{aligned}
