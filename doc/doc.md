@@ -220,6 +220,23 @@ verschiedenen betrachteten Modelle erläutert.
 
 ## Modelle
 
+Im Verlauf des Projektes haben wir unterschiedliche Modelle und Verfahren zur Klassifikation
+trainiert. Diese stammten meist aus der Python-Bibliothek
+[`scikit-learn`](https://scikit-learn.org/stable/index.html). Dabei haben wir uns vorrangig auf die
+Modelle fokussiert, welche in dieser Lehrveranstaltung (Mustererkennung) sowie in der
+Lehrveranstaltung *Numerische Methoden im Data Science und Machine Learning* von
+[Prof. Patrick Kürschner](https://sites.google.com/view/patrickkuerschner/) vorgestellt wurden.
+
+Insgesamt haben wir die folgenden Modelle untersucht:
+
+- Perzeptron
+- Multi-layered Perzeptron
+- Gradientenverfahren (*Gradient Descent*, GD) (eigene Implementierung)
+- Stochastisches Gradientenverfahren (*Stochastic Gradient Descent*, SGD)
+- Support Vektor Maschine (SVM, *Support Vector Classifier*)
+
+Die Modelle werden im folgenden Abschnitt ausgewertet.
+
 
 ## Ergebnisse
 
