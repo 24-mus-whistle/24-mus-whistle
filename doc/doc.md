@@ -151,9 +151,40 @@ später einen weiteren Ansatz konzipiert. Dieser wird im folgenden Abschnitt erl
 
 #### Zweiter Ansatz: `new_cut`
 
-*TBA*
+Das Ziel des zweiten Ansatzes war es, keine Daten in der Vorverarbeitung zu verfälschen. Ein
+Mechanismus dafür war es, Pfiffe, die ungünstig zwischen zwei Sekunden liegen, zu löschen. Das
+ursprüngliche Konzept ist in
+[`src/research/new_cut/new_cut_approach.pdf`](../src/research/new_cut/new_cut_approach.pdf)
+veranschaulicht und wird im Folgenden erklärt.
 
-[`src/research/new_cut/new_cut.ipynb`](../src/research/new_cut/new_cut.ipynb)
+Zunächst haben wir erneut einen Threshold $\theta = 0.1$ festgelegt. Anschließend geht die Funktion
+`cut_labels` (siehe [`src/research/new_cut/new_cut.ipynb`](../src/research/new_cut/new_cut.ipynb))
+eine Label-Datei zeilenweise (d.h. entsprechend der definierten Intervalle) durch.
+
+Zunächst legen wir ein Array an, welches exakt so lang ist, wie die Länge der Audio-Schnipsel für
+diese Datei. Dieses wird mit dem Label für kein Pfiff initialisiert. Wenn das aktuell betrachtete
+Intervall keinen Pfiff enthält, belassen wir das Label-Array an dem zugehörigen Index so. Falls
+allerdings ein Pfiff enthalten ist, muss die Start- und Endzeit genauer betrachtet werden.
+
+Zunächst bestimmen wir den Abstand des Startwertes von der (ganzen) Startsekunde
+(`duration_end_sec`) und den Abstand des Endwertes zur Endsekunde (`duration_end_sec`). Wenn der
+Abstand zur Startsekunde über dem Threshold $\theta = 0.1$ liegt, wird die ganze Startsekunde als
+Pfiff gewertet, da hier ein hinreichender Pfiff zu hören ist. Falls dem nicht so ist, wird die
+Startsekunde zu einem extra Array `to_remove` hinzugefügt. Alle Sekunden, die am Ende der Funktion
+dort enthalten sind, werden im folgenden aus den Daten gelöscht.
+
+Dies begründet sich darin, dass in der Sekunde ein Pfiff nur kürzer als der Threshold $\theta$ zu
+hören ist. Da wir die markierten Daten nicht verfälschen wollten, haben wir diese entsprechend
+entfernt. In der Praxis wäre es hier egal, wie das entsprechende Modell klassifiziert, sodass hier
+kein Nachteil entstanden ist.
+
+Selbiges wird mit dem Abstand zur Endsekunde durchgeführt. Ist dieser größer oder gleich dem
+Threshold $\theta$, wird die Endsekunde als Pfiff markiert. Ansonsten wird diese als zu entfernen
+markiert und im Folgenden aus dem Datensatz gelöscht.
+
+Im zugehörigen [Notebook](../src/research/new_cut/new_cut.ipynb) ist ein Beispiel dafür aufgezeigt
+– siehe Abschnitt *Debug print from `cut_labels`*. Dort ist zu sehen, dass die Daten wie von uns
+erwartet und konzipiert markiert bzw. entfernt werden.
 
 
 ## Features
