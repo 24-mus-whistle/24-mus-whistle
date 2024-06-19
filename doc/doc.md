@@ -427,7 +427,31 @@ aus dem ersten Schnitt-Ansatz ist eine kleine Verbesserung erkennbar.
 
 ### Dritter Ansatz: `new_cut_ratio`
 
-<!-- TODO: Nico -->
+Für die `new_cut_ratio`-Untersuchung ergeben sich die folgenden Ergebnisse.
+
+| Modell (Feature: MFCC)                                            | Verhältnis | Präzision | Recall | F1-Score |
+|-------------------------------------------------------------------|------------|-----------|--------|----------|
+| [Perzeptron](../src/research/mfcc/new_cut_ratio/perceptron.ipynb) | 87:1       | 100%      | 1,37%  | 0,03     |
+| [MLP](../src/research/mfcc/new_cut_ratio/mlp.ipynb) `(30,30)`     | 108:1      | 93,75%    | 41,10% | 0,57     |
+| [SGD](../src/research/mfcc/new_cut_ratio/sgd.ipynb)               | 81:1       | 87,50%    | 38,36% | 0,53     |
+| [SVM](../src/research/mfcc/new_cut_ratio/svc.ipynb)               | 56:1       | 100%      | 2,74%  | 0,05     |
+
+Insgesamt wird aus den Notebooks deutlich, dass ausschließlich bei der SVM eine Korrelation zwischen
+dem Verhältnis der Pfiff-Nicht-Pfiff-Daten vorzuliegen scheint. Das beste SVM-Modell kommt zwar
+auf eine Präzision von 100%. Allerdings ist der Recall- und F1-Wert sehr niedrig und unzureichend.
+
+Für die restlichen aufgelisteten Modelle oszillieren die Metriken der Modelle sehr stark. Eine
+direkte Korrelation scheint nicht vorhanden zu sein. Verschiedene Graphen für die Leistungsmetriken
+in Abhängigkeit des Verhältnisses können in den verlinkten Notebooks nachgeschlagen werden.
+
+Insgesamt ist jedoch erkennbar, dass die besten Verhältnisse bzgl. der Präzision stets bei einem
+großen Unterschied im Verhältnis der Pfiff- im Vergleich zu den Nicht-Pfiff-Daten sind. So sind alle
+besten Modelle bei einem Verhältnis von mehr als 50:1 – das heißt mindestens 50-Mal mehr Daten, die
+keinen Pfiff enthalten, als Daten, die einen enthalten. Dies widerspricht unser ursprünglichen
+These, dass die Übermacht der Nicht-Pfiff-Daten einen negativen Einfluss auf die Klassifikation
+von Abschnitten als "enthält Pfiff" hat. Ausschließlich für die SVM scheint eine Korrelation
+vorzuliegen. Hierbei liegt das Optimum aber dennoch bei 56-Mal mehr Kein-Pfiff-Daten als
+Pfiff-Daten.
 
 
 ### MLP Hidden Layer Size
