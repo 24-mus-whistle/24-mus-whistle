@@ -14,7 +14,7 @@ Es wurden die folgenden Modelle untersucht:
 - [Perzeptron](./perceptron.ipynb)
 - Multi-layered Perzeptron
     - [Notebook](./mlp.ipynb) mit Hidden-Layer-Size `(30,30)`
-    - [Notebook](./mlp_layer.ipynb) zur Untersuchung des Einflusses der Hidden Layer Size
+    - [Notebook](./mlp_layer/mlp_layer.ipynb) zur Untersuchung des Einflusses der Hidden Layer Size
 - [Stochastic-Gradient-Descent](./sgd.ipynb)
 - [Support-Vektor-Maschine](./svc.ipynb)
 
