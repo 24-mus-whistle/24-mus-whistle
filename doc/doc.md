@@ -245,7 +245,13 @@ die einzelnen Frequenzanteile zerlegt werden und gibt zu jeder Frequenz an, wie 
 jeweiligen Abschnitt enthalten ist[^3]. Somit sollen durch die FFT diejenigen Frequenzen
 herausgefiltert werden, welche für einen Pfiff typisch sind.
 
-<!-- TODO: FFT Bild für Whistle und No-Whistle -->
+In der folgenden Abbildung sind zwei Plots des FFT-Features zu sehen. Auf der linken Seite ist ein
+Ausschnitt mit Pfiff zu sehen, auf der rechten einer ohne. Dabei ist zu erkennen, dass sich die
+Frequenzen deutlich unterscheiden. Links ist eine deutliche Spitze zwischen 2 und 4 kHz zu sehen,
+welche im rechten Diagramm nicht erkennbar ist. Dort liegt die Spitze im niedrigen Frequenzbereich.
+Daher ist unsere Vermutung, dass die Modelle die beiden Klassen gut trennen können sollten.
+
+![FFT Feature Plot](../src/research/feature_plot/fft_feature_plot.png)
 
 
 ### Mel Frequency Cepstral Coefficients
@@ -258,7 +264,16 @@ nachempfunden werden. Dieses Feature ist in der Mustererkennung, v.a. bei der St
 Spracherkennung besonders beliebt. Allerdings werden bei der Verkleinerung Informationen über die
 Tonlage (*Pitch*) verloren[^1][^2].
 
-<!-- TODO: MFCC Bild für Whistle und No-Whistle -->
+In der folgenden Abbildung sind ebenfalls zwei Plots des MFCC-Features zu erkennen. Auf der linken
+Seite ist ein Ausschnitt mit Pfiff, auf der rechten einer mit abgebildet. Dabei ist zu erkennen,
+dass es eine kurze Pause im roten 2-MFCC-Koeffizienten gibt. Außerdem sind leichtere Unterschiede in
+den höheren Koeffizienten zu sehen.
+
+![MFCC Feature Plot](../src/research/feature_plot/mfcc_feature_plot.png)
+
+Der Unterschied ist zwar vorhanden, aber nicht so groß wie beim FFT-Feature. Unsere Vermutung ist
+daher, dass die Modelle mit diesem Feature nicht so gut abschneiden wie jene, die auf dem
+FFT-Feature trainiert werden.
 
 Im Verlauf des Projektes hat sich herausgestellt, dass sowohl die  MFCC-Generierung als auch das
 Trainieren der verschiedenen Modelle zwar im Vergleich zur FFT sehr viel schneller funktioniert.
