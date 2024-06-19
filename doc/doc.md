@@ -2,6 +2,19 @@
 
 ## Einleitung
 
+Die Robocup [Standard Platform League (SPL)](https://spl.robocup.org/) ist eine internationale Liga
+im Roboterfußball. In dieser Liga treten Teams von verschiedenen Hochschulen und Universitäten
+weltweit gegeneinader an. Verwendet wird dabei ein für alle Teams baugleicher Roboter vom Typ
+[NAO](https://www.aldebaran.com/en/nao) der Firma [Aldebaran](https://www.aldebaran.com/en).
+
+Die Spielregeln werden dabei kontinuierlich erweitert, um sich Stück für Stück den Regeln des
+menschlichen Fußballs anzunähern. In diesem Zuge wurde eine neue Regeln eingeführt, die fordert,
+dass die Roboter Pfiffe der Schiedsrichter:innen erkennen und darauf reagieren können sollen.
+
+Das Team der [HTWK Robots](https://robots.htwk-leipzig.de/startseite) hat daher bereits Audiodaten
+von vergangenen Spielen gesammelt und Labels dazu erstellt. Durch dieses Projekt, im Rahmen des
+Moduls [Mustererkennung](https://modulux.htwk-leipzig.de/modulux/modul/6325), wird untersucht, wie
+die Erkennung der Pfiffen mit Hilfe von Methoden der Mustererkennung durchgeführt werden können.
 
 ## Datenbasis
 
@@ -214,15 +227,17 @@ kurz erläutert.
 
 ### Fast Fourier-Transformation
 
-<!-- TODO: Johann: Erklärung -->
+Die Fourier-Transformation macht sich den Fakt zunutze, dass jedes beliebige periodische Signal durch eine Überlagerung von unendlich vielen Sinus- und Cosinus-Schwingungen unterschieliche Frequenen und Amplituden erzeugt werden kann. Denn die bedeutet um Umkehrschluss, das jedes periodische Signal auch wieder in eine Reihe aus unendlich vielen Sinus- und Cosinus-Schwingungen zerlegt werden kann. Die Fourier-Transformation zerlegt somit ein periodisches Signal in seine Grundfrequenzen. Nichtperiodische Signale können zerlegt werden indem ein Abschnitt des Signales gewählt wird und als eine einzelne Periode angesehen wird. Somit entsteht für diesen Abschnitt ein kontinuierliches Frequenzspektrum. Die Fast Fourier-Transformation (FFT) ist ein Algorhitmus, der sehr schnell eine abgetastete Version des kontinuierlichen Spektrums für diesen Abschnitt erstellen kann. Das Audiosignal kann damit in die einzelnen Frequenzanteile zerlegt werden und gibt zu jeder Frequenz an, wie stark sie im jeweiligen Abschnitt enthalten ist. 
+[^3]
+
+Mithilfe der FFT können die Frequenzen herusgefiltert werden, die für einen Pfiff typisch sind.
 
 
 ### Mel Frequency Cepstral Coefficients
 
 Die Mel Frequency Cepstral Coefficients (MFCC) wurden zur Modellierung von Audio-Eigenschaften
 entwickelt. Dabei werden die Dimensionen der Audio-Daten start reduziert ohne dabei wichtige
-Eigenschaften zu verlieren. Dabei werden die Oberschwingungen (*Harmonics*) und die Seitenbänder
-(*Sidebands*) des Signalspektrums extrahiert. Dabei soll das menschliche Gehör nachempfunden werden.
+Eigenschaften zu verlieren. Dies wird erreicht indem die Oberschwingungen (*Harmonics*) und die Seitenbänder (*Sidebands*) des Signalspektrums extrahiert werden . Dabei soll das menschliche Gehör nachempfunden werden.
 Dieses Feature ist in der Mustererkennung, v.a. bei der Stimmen- und Spracherkennung besonders
 beliebt. Allerdings werden bei der Verkleinerung Informationen über die Tonlage (*Pitch*) 
 verloren[^1][^2].
@@ -411,3 +426,4 @@ aus dem ersten Schnitt-Ansatz ist eine kleine Verbesserung erkennbar.
       _J. Comput. Sci. & Technol._, Bd. 16, Nr. 6, S. 582–589, Nov. 2001, doi:
       [10.1007/BF02943243](https://doi.org/10.1007/BF02943243).
 
+[^3]: E. B. Brixen, Audio Metering. 2020. doi: https://doi.org/10.4324/9781315694153.
