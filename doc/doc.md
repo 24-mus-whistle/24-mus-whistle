@@ -417,7 +417,9 @@ aus dem ersten Schnitt-Ansatz ist eine kleine Verbesserung erkennbar.
 
 <!-- TODO: Nico -->
 
-![FFT Layer Size](../src/research/fft/new_cut/mlp_layer/plot.png)
+| FFT | MFCC |
+|-----|------|
+| ![FFT Layer Size](../src/research/fft/new_cut/mlp_layer/plot.png) | ![MFCC Layer Size](../src/research/mfcc/new_cut/mlp_layer/plot.png) |
 
 
 
