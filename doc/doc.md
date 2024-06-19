@@ -508,10 +508,6 @@ die wir im Rahmen dieses Projektes betrachtet haben. Außerdem wäre die Betrach
 interessant. Diese könnte in verschiedenen Kombinationen betrachten.
 
 
-<!-- ------------------------------------------------------------------------------------------- -->
-
-<!-- LITERATUR -->
-
 [^1]: Z. Kh. Abdul und A. K. Al-Talabani, „Mel Frequency Cepstral Coefficient and its Applications:
       A Review“, _IEEE Access_, Bd. 10, S. 122136–122158, Nov. 2022, doi:
       [10.1109/ACCESS.2022.3223444](https://doi.org/10.1109/ACCESS.2022.3223444).
