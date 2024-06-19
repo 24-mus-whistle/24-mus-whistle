@@ -449,9 +449,9 @@ großen Unterschied im Verhältnis der Pfiff- im Vergleich zu den Nicht-Pfiff-Da
 besten Modelle bei einem Verhältnis von mehr als 50:1 – das heißt mindestens 50-Mal mehr Daten, die
 keinen Pfiff enthalten, als Daten, die einen enthalten. Dies widerspricht unser ursprünglichen
 These, dass die Übermacht der Nicht-Pfiff-Daten einen negativen Einfluss auf die Klassifikation
-von Abschnitten als "enthält Pfiff" hat. Ausschließlich für die SVM scheint eine Korrelation
-vorzuliegen. Hierbei liegt das Optimum aber dennoch bei 56-Mal mehr Kein-Pfiff-Daten als
-Pfiff-Daten.
+von Abschnitten als "enthält Pfiff" hat. Ausschließlich für die
+[SVM](../src/research/mfcc/new_cut_ratio/svc.ipynb) scheint eine Korrelation vorzuliegen. Hierbei
+liegt das Optimum aber dennoch bei 56-Mal mehr Kein-Pfiff-Daten als Pfiff-Daten.
 
 
 ### MLP Hidden Layer Size
