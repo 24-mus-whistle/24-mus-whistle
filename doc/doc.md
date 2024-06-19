@@ -85,6 +85,7 @@ nicht auf `.flac` oder `.csv` enden, werden anschließend gelöscht. Schlussendl
 verbleibenden Dateien in das `src/data`-Verzeichnis verschoben und das Source-Directory gelöscht.
 Somit sind die erforderlichen Daten im notwendigen Verzeichnis enthalten.
 
+
 ### Generierung der Grundmerkmale
 
 Die Audio-Dateien wurden im Folgenden mittels der [`librosa`](https://librosa.org/)-Bibliothek
@@ -301,7 +302,6 @@ Insgesamt haben wir die folgenden Modelle untersucht:
 Die Modelle werden im folgenden Abschnitt ausgewertet.
 
 
-
 ### Experimente mit MLP Hidden-Layer-Size
 
 Bei den Multi-layered Perzeptronen ist die Größe der Hidden Layers entscheidend. Daher haben wir uns
@@ -336,18 +336,18 @@ verschiedenen Schnipsel-Ansätze.
 Aus diesem Grund konnten für FFT nur ein Bruchstück der Dateien untersuchen. Aus selbigem Grund
 haben wir für die FFT nur die Support Vektor Maschine trainiert. Die Ergebnisse sehen wie folgt aus.
 
-| Modell (Feature: MFCC)                                                  | Präzision | Recall | F1-Score |
-|-------------------------------------------------------------------------|-----------|--------|----------|
-| [Gradientenabstieg 2D](../src/research/gradient_descent/split_gd.ipynb) | 77.14%    | 87,10% | 0,81     |
-| [Gradientenabstieg 10D](../src/research/gradient_descent/split_gd.ipynb)| 69,57%    | 84,21% | 0,76     |
-| [Perzeptron](../src/research/mfcc/uncut/perceptron_mfcc.ipynb) | 93,26%    | 100%   | 0,97     |
-| [SGD](../src/research/mfcc/uncut/sgd_mfcc.ipynb)               | 93,26%    | 100%   | 0,97     |
-| [SVM](../src/research/mfcc/uncut/svc_mfcc.ipynb)               | 95,40%    | 100%   | 0,98     |
+| Modell (Feature: MFCC)                                                   | Präzision | Recall | F1-Score |
+|--------------------------------------------------------------------------|-----------|--------|----------|
+| [Perzeptron](../src/research/mfcc/uncut/perceptron_mfcc.ipynb)           | 93,26%    | 100%   | 0,97     |
+| [SGD](../src/research/mfcc/uncut/sgd_mfcc.ipynb)                         | 93,26%    | 100%   | 0,97     |
+| [SVM](../src/research/mfcc/uncut/svc_mfcc.ipynb)                         | 95,40%    | 100%   | 0,98     |
+| [Gradientenabstieg 2D](../src/research/gradient_descent/split_gd.ipynb)  | 77.14%    | 87,10% | 0,81     |
+| [Gradientenabstieg 10D](../src/research/gradient_descent/split_gd.ipynb) | 69,57%    | 84,21% | 0,76     |
 
-
-In der vorangestellten Tabelle ist zu erkennen, dass das Gradientenabstigsverfahren mit einer Präzision von nur
-69,57% am schlechtesten abschneidet. Die anderen drei Modelle schneiden dagegen sehr gut ab. Die
-Präzision und der F1-Wert liegen stets bei über 90% bzw. 0,95. Die SVM schneidet dabei am besten ab.
+In der vorangestellten Tabelle ist zu erkennen, dass das Gradientenabstigsverfahren mit einer
+Präzision von nur 69,57% am schlechtesten abschneidet. Die anderen drei Modelle schneiden dagegen
+sehr gut ab. Die Präzision und der F1-Wert liegen stets bei über 90% bzw. 0,95. Die SVM schneidet
+dabei insgesamt am besten ab.
 
 | Modell (Feature: FFT)                                 | Präzision | Recall | F1-Score |
 |-------------------------------------------------------|-----------|--------|----------|
@@ -367,21 +367,25 @@ FFT-Modelle auf allen Daten zu trainieren.
 
 Für MFCC sehen die Ergebnisse wie folgt aus:
 
-| Modell (Feature: MFCC)                                                | Präzision | Recall | F1-Score |
-|-----------------------------------------------------------------------|-----------|--------|----------|
-| [Gradientenabstieg 2D](../src/research/gradient_descent/cut_gd.ipynb) | 68,22%    | 41,48% | 0,51     |
-| [Gradientenabstieg 10D](../src/research/gradient_descent/cut_gd.ipynb)| 59,80%    | 34,66% | 0,43     |
-| [Perzeptron](../src/research/mfcc/cut/perceptron.ipynb) | 91,18%    | 50,00% | 0,65     |
-| [MLP](../src/research/mfcc/cut/mlp.ipynb) `(100,)`      | 54,32%    | 70,97% | 0,62     |
-| [SGD](../src/research/mfcc/cut/sgd.ipynb)               | 84,49%    | 51,61% | 0,65     |
-| [SVM](../src/research/mfcc/cut/svc.ipynb)               | 0,00%     | 0,00%  | 0,00     |
+| Modell (Feature: MFCC)                                                 | Präzision | Recall | F1-Score |
+|------------------------------------------------------------------------|-----------|--------|----------|
+| [Perzeptron](../src/research/mfcc/cut/perceptron.ipynb)                | 91,18%    | 50,00% | 0,65     |
+| [MLP](../src/research/mfcc/cut/mlp.ipynb) `(100,)`                     | 54,32%    | 70,97% | 0,62     |
+| [SGD](../src/research/mfcc/cut/sgd.ipynb)                              | 84,49%    | 51,61% | 0,65     |
+| [SVM](../src/research/mfcc/cut/svc.ipynb)                              | 0,00%     | 0,00%  | 0,00     |
+| [Gradientenabstieg 2D](../src/research/gradient_descent/cut_gd.ipynb)  | 68,22%    | 41,48% | 0,51     |
+| [Gradientenabstieg 10D](../src/research/gradient_descent/cut_gd.ipynb) | 59,80%    | 34,66% | 0,43     |
 
 Im Vergleich zu den [Ergebnissen](#ungeschnittene-daten) für die ungeschnittenen Daten ist deutlich
 erkennbar, dass sich unsere These bzgl. des Paddings bestätigt. Die Ergebnisse sind nun viel
-schlechter. Das Gradientenabstiegsverfahren kann seine werte zwar fast halten, jedoch ist hier zu beachten, dass im Gradientenabstigsverfahren nicht in Trainings und Testdaten aufgeteilt wurde, da es lediglich als versuch zum Trennen der Trainigsdaten gedacht war. Die beim Präzision kann sich zwar fast halten. Allerdings ist der Recall
-und der F1-Score wesentlich schlechter als vorher. Die SVM hat hier am meisten Schwierigkeiten und
-macht keine (korrekte oder überhaupt eine) Pfiff-Vorhersage. Dieses Modell klassifiziert alle Daten
-als Kein-Pfiff.
+schlechter. Das Gradientenabstiegsverfahren kann seine Werte zwar fast halten, jedoch ist hier zu
+beachten, dass hierbei nicht in Trainings- und Testdaten aufgeteilt wurde, da es lediglich als
+Versuch zum Trennen der Trainingsdaten gedacht war.
+
+Die Präzision beim Perzeptron kann sich zwar fast halten. Allerdings ist der Recall und der F1-Score
+wesentlich schlechter als vorher. Die SVM hat hier am meisten Schwierigkeiten und macht keine
+(korrekte oder überhaupt eine) Pfiff-Vorhersage. Dieses Modell klassifiziert alle Daten als
+Kein-Pfiff.
 
 Unsere Vermutung ist, dass dies am Verhältnis der Pfiff- zu den Kein-Pfiff-Daten liegen könnte.
 Wir haben insgesamt 112-Mal mehr Kein-Pfiff-Sekunden-Abschnitte als welche mit Pfiff. Dadurch
