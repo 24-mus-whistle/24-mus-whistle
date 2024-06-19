@@ -22,14 +22,12 @@ Es wurden die folgenden Modelle untersucht:
 ## Ergebnisse
 
 In der folgenden Tabelle sind die Präzisions-, Recall- und F1-Werte der jeweiligen Modelle
-dargestellt. Dabei ist zu erkennen, dass die Werte vom MLP und der SVM jeweils 0 annehmen. Bei
-genauerer Betrachtung ist erkenntlich, dass alle Test-Daten als "Kein-Pfiff enthalten" klassifiziert
-werden. Auch wenn die anderen beiden Modelle überhaupt Pfiffe als solche identifizieren, schneiden
-diese dennoch sehr schlecht ab.
+dargestellt. Die Daten werden in der
+[Dokumentation](../../../../doc/doc.md#zweiter-schnipsel-ansatz-new_cut) ausgewertet.
 
-| Modell                           | Präzision | Recall | F1-Score |
-|----------------------------------|-----------|--------|----------|
-| [Perzeptron](./perceptron.ipynb) | 12,50%    | 2,74%  | 0,04     |
-| [MLP](./mlp.ipynb) `(30,30)`     | 0,00%     | 0,00%  | 0,00     |
-| [SGD](./sgd.ipynb)               | 8,11%     | 4,11%  | 0,05     |
-| [SVM](./svc.ipynb)               | 0,00%     | 0,00%  | 0,00     |
+| Modell                           | Präzision | Recall | F1-Score | Trainingszeit |
+|----------------------------------|-----------|--------|----------|---------------|
+| [Perzeptron](./perceptron.ipynb) | 74,60%    | 64,38% | 0,69     | 1,49s         |
+| [MLP](./mlp.ipynb) `(30,30)`     | 54,63%    | 80,82% | 0,65     | 11,25s        |
+| [SGD](./sgd.ipynb)               | 57,84%    | 80.82% | 0,67     | 4,85s         |
+| [SVM](./svc.ipynb)               | 0,00%     | 0,00%  | 0,00     | 12,11s        |

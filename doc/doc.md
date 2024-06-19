@@ -330,14 +330,12 @@ haben wir für die FFT nur die Support Vektor Maschine trainiert. Die Ergebnisse
 
 | Modell (Feature: MFCC)                                         | Präzision | Recall | F1-Score |
 |----------------------------------------------------------------|-----------|--------|----------|
-| [Perzeptron](../src/research/mfcc/uncut/perceptron_mfcc.ipynb) | 69,75%    | 100%   | 0,82     |
-| [SGD](../src/research/mfcc/uncut/sgd_mfcc.ipynb)               | 89,25%    | 100%   | 0,94     |
+| [Perzeptron](../src/research/mfcc/uncut/perceptron_mfcc.ipynb) | 93,26%    | 100%   | 0,97     |
+| [SGD](../src/research/mfcc/uncut/sgd_mfcc.ipynb)               | 93,26%    | 100%   | 0,97     |
 | [SVM](../src/research/mfcc/uncut/svc_mfcc.ipynb)               | 95,40%    | 100%   | 0,98     |
 
-In der vorangestellten Tabelle ist zu erkennen, dass das Perzeptron mit einer Präzision von nur
-69,75% am schlechtesten abschneidet. Die SVM schneidet hierbei am besten ab mit einer Präzision von
-95,40% und einem F1-Score 0,98 – also nahezu perfekt. Das SGD schneidet ebenfalls nicht schlecht ab
-mit einer Präzision von fast 90% und einem F1-Score von 0,94.
+In der vorangestellten Tabelle ist zu erkennen, alle drei Modelle sehr gut abschneiden. Die
+Präzision und der F1-Wert liegen stets bei über 90% bzw. 0,95. Die SVM schneidet dabei am besten ab.
 
 | Modell (Feature: FFT)                                 | Präzision | Recall | F1-Score |
 |-------------------------------------------------------|-----------|--------|----------|
@@ -359,21 +357,17 @@ Für MFCC sehen die Ergebnisse wie folgt aus:
 
 | Modell (Feature: MFCC)                                  | Präzision | Recall | F1-Score |
 |---------------------------------------------------------|-----------|--------|----------|
-| [Perzeptron](../src/research/mfcc/cut/perceptron.ipynb) | 25,00%    | 1,61%  | 0,03     |
-| [MLP](../src/research/mfcc/cut/mlp.ipynb) `(100,)`      | 0,00%     | 0,00%  | 0,00     |
-| [SGD](../src/research/mfcc/cut/sgd.ipynb)               | 33,33%    | 1,61%  | 0,03     |
+| [Perzeptron](../src/research/mfcc/cut/perceptron.ipynb) | 91,18%    | 50,00% | 0,65     |
+| [MLP](../src/research/mfcc/cut/mlp.ipynb) `(100,)`      | 54,32%    | 70,97% | 0,62     |
+| [SGD](../src/research/mfcc/cut/sgd.ipynb)               | 84,49%    | 51,61% | 0,65     |
 | [SVM](../src/research/mfcc/cut/svc.ipynb)               | 0,00%     | 0,00%  | 0,00     |
 
 Im Vergleich zu den [Ergebnissen](#ungeschnittene-daten) für die ungeschnittenen Daten ist deutlich
 erkennbar, dass sich unsere These bzgl. des Paddings bestätigt. Die Ergebnisse sind nun viel
-schlechter und unbrauchbar. Jegliche Gesamtleistungen der Modelle, gemessen am F1-Score, liegt
-bei unter 0,1. Weiterhin macht das MLP und die SVM keine einzige (korrekte oder überhaupt)
-Pfiff-Vorhersage. Alle Daten werden bei diesen beiden Modellen als Kein-Pfiff klassifiziert.
-
-Es ist außerdem zu erkennen, dass die Werte vom MLP und der SVM jeweils 0 annehmen. Bei genauerer
-Betrachtung ist erkenntlich, dass alle Test-Daten als "Kein-Pfiff enthalten" klassifiziert werden.
-Auch wenn die anderen beiden Modelle überhaupt Pfiffe als solche identifizieren, schneiden diese
-dennoch sehr schlecht ab.
+schlechter. Die Präzision kann sich beim Perzeptron zwar fast halten. Allerdings ist der Recall
+und der F1-Score wesentlich schlechter als vorher. Die SVM hat hier am meisten Schwierigkeiten und
+macht keine (korrekte oder überhaupt eine) Pfiff-Vorhersage. Dieses Modell klassifiziert alle Daten
+als Kein-Pfiff.
 
 Unsere Vermutung ist, dass dies am Verhältnis der Pfiff- zu den Kein-Pfiff-Daten liegen könnte.
 Wir haben insgesamt 112-Mal mehr Kein-Pfiff-Sekunden-Abschnitte als welche mit Pfiff. Dadurch
@@ -399,9 +393,9 @@ Als nächstes haben wir einen anderen Schnitt-Ansatz verwendet (siehe Abschnitt
 
 | Modell (Feature: MFCC)                                      | Präzision | Recall | F1-Score |
 |-------------------------------------------------------------|-----------|--------|----------|
-| [Perzeptron](../src/research/mfcc/new_cut/perceptron.ipynb) | 12,50%    | 2,74%  | 0,04     |
-| [MLP](../src/research/mfcc/new_cut/mlp.ipynb) `(30,30)`     | 0,00%     | 0,00%  | 0,00     |
-| [SGD](../src/research/mfcc/new_cut/sgd.ipynb)               | 8,11%     | 4,11%  | 0,05     |
+| [Perzeptron](../src/research/mfcc/new_cut/perceptron.ipynb) | 74,60%    | 64,38% | 0,69     |
+| [MLP](../src/research/mfcc/new_cut/mlp.ipynb) `(30,30)`     | 54,63%    | 80,82% | 0,65     |
+| [SGD](../src/research/mfcc/new_cut/sgd.ipynb)               | 57,84%    | 80.82% | 0,67     |
 | [SVM](../src/research/mfcc/new_cut/svc.ipynb)               | 0,00%     | 0,00%  | 0,00     |
 
 Dabei ist zu erkennen, dass die Ergebnisse noch schlechter als beim

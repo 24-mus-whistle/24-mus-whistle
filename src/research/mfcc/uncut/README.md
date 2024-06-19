@@ -25,8 +25,8 @@ Mit diesem Ansatz wurden die folgenden Modelle untersucht:
 
 Insgesamt schnitten die Modelle wie folgt ab.
 
-| Modell                                 | Präzision | Recall | F1-Score |
-|----------------------------------------|-----------|--------|----------|
-| [Perzeptron](./perceptron_mfcc.ipynb)  | 69,75%    | 100%   | 0,82     |
-| [SGD](./sgd_mfcc.ipynb)                | 89,25%    | 100%   | 0,94     |
-| [SVM](./svc_mfcc.ipynb)                | 95,40%    | 100%   | 0,98     |
+| Modell                                 | Präzision | Recall | F1-Score | Trainingszeit |
+|----------------------------------------|-----------|--------|----------|---------------|
+| [Perzeptron](./perceptron_mfcc.ipynb)  | 93,26%    | 100%   | 0,97     | 0,42s         |
+| [SGD](./sgd_mfcc.ipynb)                | 93,26%    | 100%   | 0,97     | 0,35s         |
+| [SVM](./svc_mfcc.ipynb)                | 95,40%    | 100%   | 0,98     | 0,85s         |

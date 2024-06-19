@@ -19,16 +19,12 @@ Es wurden die folgenden Modelle untersucht:
 ## Ergebnisse
 
 In der folgenden Tabelle sind die Präzisions-, Recall- und F1-Werte der jeweiligen Modelle
-dargestellt. Dabei ist zu erkennen, dass das Stochastische Gradientenverfahren zwar am besten
-abschneidet. Allerdings sind die Werte nicht zufriedenstellend.
+dargestellt. Die Daten werden in der
+[Dokumentation](../../../../doc/doc.md#erster-schnipsel-ansatz-cut) ausgewertet.
 
-Weiterhin ist erkennbar, dass sowohl das MLP als auch die SVM Werte von jeweils 0 annehmen. Bei
-genauerer Betrachtung ist erkenntlich, dass alle Test-Daten als "Kein-Pfiff enthalten" klassifiziert
-werden.
-
-| Modell                           | Präzision | Recall | F1-Score |
-|----------------------------------|-----------|--------|----------|
-| [Perzeptron](./perceptron.ipynb) | 25,00%    | 1,61%  | 0,03     |
-| [MLP](./mlp.ipynb) `(100,)`      | 0,00%     | 0,00%  | 0,00     |
-| [SGD](./sgd.ipynb)               | 33,33%    | 1,61%  | 0,03     |
-| [SVM](./svc.ipynb)               | 0,00%     | 0,00%  | 0,00     |
+| Modell                           | Präzision | Recall | F1-Score | Trainingszeit |
+|----------------------------------|-----------|--------|----------|---------------|
+| [Perzeptron](./perceptron.ipynb) | 91,18%    | 50,00% | 0,65     | 1,25s         |
+| [MLP](./mlp.ipynb) `(100,)`      | 54,32%    | 70,97% | 0,62     | 53,6s         |
+| [SGD](./sgd.ipynb)               | 84,49%    | 51,61% | 0,65     | 6,14s         |
+| [SVM](./svc.ipynb)               | 0,00%     | 0,00%  | 0,00     | 14,3s         |
