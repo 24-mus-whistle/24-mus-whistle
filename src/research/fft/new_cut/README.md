@@ -10,7 +10,9 @@ des Verhältnisses von Pfiff-Nicht-Pfiff-Daten. Der Schnitt-Ansatz ist im zugeh�
 In diesem Verzeichnis wurden die folgenden Modelle untersucht:
 
 - [Perzeptron](./perceptron.ipynb)
-- [Multi-layered Perzeptron](./mlp.ipynb) mit Hidden-Layer-Größe von `(30,30)`
+- Multi-layered Perzeptron
+    - [Notebook](./mlp.ipynb) mit Hidden-Layer-Size `(30,30)`
+    - [Notebook](./mlp_layer/mlp_layer.ipynb) zur Untersuchung des Einflusses der Hidden Layer Size
 - [Stochastic-Gradient-Descent](./sgd.ipynb)
 - [Support-Vektor-Maschine](./svc.ipynb)
 
