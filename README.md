@@ -17,15 +17,59 @@ die Erkennung der Pfiffen mit Hilfe von Methoden der Mustererkennung durchgefüh
 
 ## Dokumentation
 
+> [!TIP]
+> Die resultierende Dokumentation kann unter [`doc/doc.md`](./doc/doc.md) eingesehen werden.
+> Ebenfalls sind die Beiträge der Einzelpersonen des Teams unter
+> [`doc/contributions.md`](./doc/contributions.md) aufgelistet.
+
+
+## Struktur des Repositories
+
 Die resultierende Dokumentation kann unter [`doc/doc.md`](./doc/doc.md) eingesehen werden.
 Ebenfalls sind die Beiträge der Einzelpersonen des Teams unter
 [`doc/contributions.md`](./doc/contributions.md) aufgelistet.
 
+Die Jupyter-Notebooks und Daten sind in `src/` enthalten. Die Daten liegen lokal unter `src/data/`,
+siehe Hinweis [unten](#hinweis-bzgl-der-daten). Ein Hilfsskript ist in `src/helper` zu finden. Die
+eigentlichen Untersuchungen gliedern sich in `src/research`.
+
+Das Research-Verzeichnis ist nach den beiden Features (FFT und MFCC) gegliedert, welche wiederum
+nach den einzelnen Schnitt-Ansätzen (siehe
+[Dokumentation](./doc/doc.md#schnipsel-ansätze)) aufgeteilt sind. Die Generierung der Daten mit den
+verschiedenen Schnittansätzen sind jeweils in eigenen Verzeichnissen gelagert (`cut/`, `new_cut/`).
+Außerdem sind Notebooks zu den ersten Recherchen sowie zur Generierung von Diagrammen für die
+Dokumentation (`feature_plot/`) enthalten.
+
+Insgesamt gliedern sich die *Verzeichnisse* wie folgt.
+
+```
+src
+├── doc
+└── src
+    ├── data
+    ├── helper
+    └── research
+        ├── cut
+        ├── feature_plot
+        ├── fft
+        │   ├── cut
+        │   ├── new_cut
+        │   │   ├── mlp_layer
+        ├── gradient_descent
+        ├── mfcc
+        │   ├── cut
+        │   ├── new_cut
+        │   │   ├── mlp_layer
+        │   ├── new_cut_ratio
+        │   └── uncut
+        └── new_cut
+```
+
 
 ## Kontext
 
-Projekt für [C201.2](https://modulux.htwk-leipzig.de/modulux/modul/6325): Mustererkennung gehalten
-von [Prof. Martin Grüttmüller](https://fim.htwk-leipzig.de/fakultaet/personen/professorinnen-und-professoren/martin-gruettmueller/)
+Projekt für das Modul [C201.2](https://modulux.htwk-leipzig.de/modulux/modul/6325): Mustererkennung
+gehalten von [Prof. Martin Grüttmüller](https://fim.htwk-leipzig.de/fakultaet/personen/professorinnen-und-professoren/martin-gruettmueller/)
 
 
 ## Reproduktion
