@@ -474,14 +474,38 @@ sehr gut ab. Die besten Werte sind dabei in folgender Tabelle dargestellt.
 | [MFCC](../src/research/mfcc/new_cut/mlp_layer/mlp_layer.ipynb) | (70,40) | 95,35%    | 56,16% | 0,71     |
 
 
-
 # Fazit
 
+Im Rahmen dieses Projektes haben wir verschiedene Modelle mit verschiedenen Ansätzen zur
+Datenvorverarbeitung betrachtet und mit diesen experimentiert. Dabei sind wir zusammengefasst zu den
+folgenden Schlüssen gekommen.
 
-# Ausblick
+- Unterschiedliche Längen von Audio-Daten sollten auf eine einheitliche Länge gebracht werden, um
+  die Klassifikation nicht zu verfälschen. Der Ansatz des Paddings scheint dabei die Daten zu
+  verfälschen.
 
-- verschiedene Einstellungen von (weiteren) Parameter probieren
-- andere Feature probieren
+- Das Verhältnis der Daten nach den ursprünglichen Klassen scheint nicht direkt mit der Leistung
+  der Modelle zu korrelieren. Die einzige Ausnahme bildet die Support-Vektor-Maschine.
+
+- Die Größe der Hidden Layer im Multi-layered Perzeptron hat einen Einfluss auf die Leistung der
+  Modelle. Dabei kommen wir zum Ergebnis, dass bei zwei Hidden Layer mindestens 10 Neuronen pro
+  Schicht für gute Leistungen notwendig sind. Bei zusätzlichen Schichten verbessert sich die
+  Leistung kaum bis gar nicht.
+
+- Die Leistungen des MFCC- im Vergleich zum FFT-Feature unterscheiden sich teilweise stark. Es lässt
+  sich allerdings kein direktes Fazit ziehen, welches der beiden Feature besser geeignet ist. Dies
+  beruht auf der Tatsache, dass jedes Feature bei einem anderen Ansatz besser abschneidet. Dabei
+  ist keines der beiden Features bei der Mehrzahl der Modelle und Ansätze konstant besser als das
+  jeweils andere.
+
+- Das insgesamt beste Ergebnis konnten wir beim Multi-layered Perzeptron, trainiert auf dem
+  FFT-Feature mit dem zweiten Schnipsel-Ansatz, feststellen. Dies kann anhand der Präzision von
+  86,57%, welche für dieses Szenario am wichtigsten war, bei einem F1-Score von 0,83 erkannt
+  werden[^4].
+
+Zukünftig wäre es denkbar, mit weiteren Parametern der Modelle zu experimentieren, als mit denen,
+die wir im Rahmen dieses Projektes betrachtet haben. Außerdem wäre die Betrachtung weiterer Features
+interessant. Diese könnte in verschiedenen Kombinationen betrachten.
 
 
 <!-- ------------------------------------------------------------------------------------------- -->
@@ -498,3 +522,7 @@ sehr gut ab. Die besten Werte sind dabei in folgender Tabelle dargestellt.
 
 [^3]: E. Brixen, _Audio Metering: Measurements, Standards and Practice_, 3. Aufl. New York: Focal
       Press, 2020. doi: [10.4324/9781315694153](https://doi.org/10.4324/9781315694153).
+
+[^4]: Beim `new_cut_ratio`-Ansatz erreichen wir zwar eine Präzision von teilweise 100%. Allerdings
+      sind dabei die Recall- und F1-Werte sehr schlecht und somit nicht für die praktische Anwendung
+      geeignet.
