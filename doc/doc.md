@@ -304,7 +304,15 @@ Die Modelle werden im folgenden Abschnitt ausgewertet.
 
 ### Experimente mit MLP Hidden-Layer-Size
 
-<!-- TODO: Nico -->
+Bei den Multi-layered Perzeptronen ist die Größe der Hidden Layers entscheidend. Daher haben wir uns
+dafür entschieden, diesen Parameter genauer zu untersuchen. Als Basis trainieren wir jeweils ein MLP
+mit den folgenden Größen:
+
+$$\{ (1,1),~(1,10),~(1,20),~\ldots,~(1,50),~(10,1),~(10,10),~\ldots,~(10,50),~\ldots,~(100,50)\}$$
+
+Die erste Zahl des Tupels beschreibt dabei die Anzahl der Neuronen in der ersten Hidden Layer, die
+zweite die Zahl in der zweiten. Wir erwarten, dass dieser Parameter einen großen Einfluss auf die
+Leistung des Modells hat. Die Ergebnisse werden im folgenden Kapitel ausgewertet.
 
 
 ## Ergebnisse
@@ -424,11 +432,22 @@ aus dem ersten Schnitt-Ansatz ist eine kleine Verbesserung erkennbar.
 
 ### MLP Hidden Layer Size
 
-<!-- TODO: Nico -->
+In der folgenden Abbildung sind die Leistungsmetriken der MLP in Abhängigkeit der Größe ihrer
+Hidden-Layers dargestellt, jeweils für FFT und MFCC. Die Daten basieren hierbei auf dem
+[`new_cut`-Ansatz](#zweiter-ansatz-new_cut).
 
 | FFT | MFCC |
 |-----|------|
 | ![FFT Layer Size](../src/research/fft/new_cut/mlp_layer/plot.png) | ![MFCC Layer Size](../src/research/mfcc/new_cut/mlp_layer/plot.png) |
+
+Bei beiden Features ist zu erkennen, dass die Metriken sehr gut abschneiden (über 0,8), sobald beide
+Hidden Layers mindestens 10 Neuronen enthalten. Innerhalb dieses Bereiches schneiden die MLP jeweils
+sehr gut ab. Die besten Werte sind dabei in folgender Tabelle dargestellt.
+
+| Modell                                                         | Größe   | Präzision | Recall | F1-Score |
+|----------------------------------------------------------------|---------|-----------|--------|----------|
+| [FFT](../src/research/fft/new_cut/mlp_layer/mlp_layer.ipynb)   | (80,20) | 92,59%    | 68,49% | 0,79     |
+| [MFCC](../src/research/mfcc/new_cut/mlp_layer/mlp_layer.ipynb) | (70,40) | 95,35%    | 56,16% | 0,71     |
 
 
 
