@@ -131,10 +131,10 @@ dass wir die Start- und End-Zeiten nicht einfach runden können, da wir den Pfif
 könnten und den Schnipsel falsch klassifizieren. Dies lässt sich am folgenden Beispiel darstellen:
 
 $$
-\begin{align}
+\begin{aligned}
   (\text{start},~\text{end}) &= (5.1,~5.4) \approx (5,~5) \\
   (\text{start},~\text{end}) &= (5.5,~5.9) \approx (6,~6)
-\end{align}
+\end{aligned}
 $$
 
 Hier ist zu erkennen, dass die beiden Zeiträume so gerundet wird, dass die Pfiffe in Sekunde 5
@@ -380,7 +380,7 @@ als Kein-Pfiff.
 Unsere Vermutung ist, dass dies am Verhältnis der Pfiff- zu den Kein-Pfiff-Daten liegen könnte.
 Wir haben insgesamt 112-Mal mehr Kein-Pfiff-Sekunden-Abschnitte als welche mit Pfiff. Dadurch
 könnte es für die Modelle naheliegen, eher als Kein-Pfiff zu klassifizieren. Aus diesem Grund haben
-wir den oben bereits angesprochenen [dritten Ansatz](#dritter-ansatz-new_cut_ration) zur Analyse
+wir den oben bereits angesprochenen [dritten Ansatz](#dritter-ansatz-new_cut_ratio) zur Analyse
 dieses Verhältnisses konzipiert.
 
 | Modell (Feature: FFT)                                  | Präzision | Recall | F1-Wert |
