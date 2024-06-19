@@ -66,11 +66,11 @@ In diesem Ordner wurden die folgenden verschiedenen Modelle untersucht:
 Die Ergebnisse sind in den jeweiligen verlinkten Notebooks zu finden. Insgesamt scheint allerdings
 ausschließlich bei der Support-Vektor-Maschine eine tatsächliche Korrelation zwischen dem Verhältnis
 der Label und den Leistungsmetriken der Modelle vorhanden zu sein. Weiterhin schließt dieses Modell
-mit einer Präzision von 100% bei einem Recall von 8,22% am besten ab.
+mit einer Präzision von 100% für das reale Szenario am besten ab.
 
 | Modell                           | Verhältnis | Präzision | Recall | F1-Score |
 |----------------------------------|------------|-----------|--------|----------|
-| [Perzeptron](./perceptron.ipynb) | 59:1       | 17,31%    | 12,33% | 0,14     |
-| [MLP](./mlp.ipynb) `(30,30)`     | 94:1       | 100%      | 1,37%  | 0,03     |
-| [SGD](./sgd.ipynb)               | 47:1       | 14,86%    | 15,07% | 0,15     |
-| [SVM](./svc.ipynb)               | 21:1       | 100%      | 8,22%  | 0,15     |
+| [Perzeptron](./perceptron.ipynb) | 87:1       | 100%      | 1,37%  | 0,03     |
+| [MLP](./mlp.ipynb) `(30,30)`     | 108:1      | 93,75%    | 41,10% | 0,57     |
+| [SGD](./sgd.ipynb)               | 81:1       | 87,50%    | 38,36% | 0,53     |
+| [SVM](./svc.ipynb)               | 56:1       | 100%      | 2,74%  | 0,05     |
