@@ -486,16 +486,14 @@ sehr gut ab. Die besten Werte sind dabei in folgender Tabelle dargestellt.
 
 # Fazit
 
-Im Rahmen dieses Projektes haben wir verschiedene Modelle mit verschiedenen Ansätzen zur
-Datenvorverarbeitung betrachtet und mit diesen experimentiert. Dabei sind wir zusammengefasst zu den
-folgenden Schlüssen gekommen.
+In diesem Projekt haben wir uns mit der Aufgabe der Erkennung von Pfiffen durch NAO Robots der Robocup Standard Platform League (SPL) beschäftigt. Das Ziel war dabei, die bereits bestehenden gelabelten Audioaufnahmen aus den Spielen des Teams der HTWK Robots zu nutzen und durch Methoden der Mustererkennung eine Pfifferkennung zu entwickeln.
+Dafür haben wir verschiedene Modelle mit verschiedenen Ansätzen zur Datenvorverarbeitung betrachtet und mit diesen experimentiert. Dabei konnten wir folgende Erkenntnisse gewnnen:
 
-- Unterschiedliche Längen von Audio-Daten sollten auf eine einheitliche Länge gebracht werden, um
-  die Klassifikation nicht zu verfälschen. Der Ansatz des Paddings scheint dabei die Daten zu
-  verfälschen.
+- Auch wenn nach der Stichprobenartigen ausführung der FFT zu Beginn der Anschein erweckt wurded, dass sich "Pfiff" und "kein Pfiff" sehr leicht trennen lassen sollten, stellt sich die Klassifikation als deutlich schwieriger heraus als zu vermutet. Bereits der erste Versuch die Klassen durch einen einfachen Filter im Gradientenabstiegsverfahren zu trennen, zeigt, dass in den Daten viele Abschnitte enthalten sind, die sich auf diese Weise nicht eindeutig Linear trennen lassen.
 
-- Das Verhältnis der Daten nach den ursprünglichen Klassen scheint nicht direkt mit der Leistung
-  der Modelle zu korrelieren. Die einzige Ausnahme bildet die Support-Vektor-Maschine.
+- Die gegebenen, langen Audio-Daten müssen zu beginn in kleinere Abschnitte unterteilt werden. Dabei sollten diese auf eine einheitliche Länge gebracht werden, um die Klassifikation nicht zu verfälschen. Der Ansatz, des Paddings scheint bei den verwendeten Methoden dazu zu führen, dass diese nicht nach Pfiff sondern nach Länge des gegebenen Features klassifizieren.
+
+- Die Anzahl der mit "Pfiff" und "kein Pfiff" gelabelten Trainingsdaten sollte bei der Verwendung der SVM nicht in einem zu stark asymetrischen Verhältniss sein, da dieses Verfahren im Projekt dazu neigt, einen Starken bias in Richtung des häufiger verwendenten Labels zu entwickeln
 
 - Die Größe der Hidden Layer im Multi-layered Perzeptron hat einen Einfluss auf die Leistung der
   Modelle. Dabei kommen wir zum Ergebnis, dass bei zwei Hidden Layer mindestens 10 Neuronen pro
@@ -515,7 +513,7 @@ folgenden Schlüssen gekommen.
 
 Zukünftig wäre es denkbar, mit weiteren Parametern der Modelle zu experimentieren, als mit denen,
 die wir im Rahmen dieses Projektes betrachtet haben. Außerdem wäre die Betrachtung weiterer Features
-interessant. Diese könnte in verschiedenen Kombinationen betrachten.
+interessant. Diese könnte in verschiedenen Kombinationen betrachten. Für eine zukünftige Implementierung auf den NAO Robotern muss zudem eine genaue Analyse der Performance für die Klassifikation der verschiedenen Verfahren durchgeführt werden, da die Roboter nur über eine sehr stark begrenzte Rechenleistung verfügen. Aus diesem Grund muss eine spätere Implementierung in der Programmiersprache C durchgeführt werden. Des weiteren besteht für die Zukunft weiterhin die Aufgabe, aus den Daten nicht nur die Pfiffe zu erkennen, sondern auch zu unterscheiden ob es sich um einen für den Roboter relevanten Pfiff auf dem eigenen Spielfeld oder um einen Pfiff von einem benachbarten Spielfeld handelt, der vom Roboter ignoriert werden sollte.
 
 
 [^1]: Z. Kh. Abdul und A. K. Al-Talabani, „Mel Frequency Cepstral Coefficient and its Applications:
